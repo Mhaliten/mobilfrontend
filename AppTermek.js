@@ -24,6 +24,7 @@ export default class AppTermek extends React.Component {
 
 
   componentDidMount(){
+    alert("hell")
     return fetch('http://192.168.1.109:3000/termekek')
       .then((response) => response.json())
       .then((responseJson) => {
@@ -34,7 +35,7 @@ export default class AppTermek extends React.Component {
         }, function(){
 
         });
-        this.kivalaszt(1)
+       alert(JSON.stringify(this.state.dataSource))
 
 
       })
