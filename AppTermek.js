@@ -24,8 +24,8 @@ export default class AppTermek extends React.Component {
 
 
   componentDidMount(){
-    alert("hell")
-    return fetch('http://192.168.1.109:3000/termekek')
+    alert("hello")
+    return fetch('http://192.168.2.110:3000/termekek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -51,7 +51,7 @@ export default class AppTermek extends React.Component {
     let bemenet={
       bevitel1:szam
     }
-    return fetch('http://192.168.1.109:3000/temalekerdez',{
+    return fetch('http://192.168.2.110:3000/temalekerdez',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -136,12 +136,6 @@ export default class AppTermek extends React.Component {
     
           keyExtractor={({uzenet_id}, index) => uzenet_id}
         />
-
-
-
-
-
-
 
       </View>
     );
