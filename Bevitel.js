@@ -26,7 +26,7 @@ felvitel=async ()=>{
       bevitel3:this.props.akttema_bevitel
     }
 
-    fetch('http://192.168.1.110:3000/kommentfelvitel',{
+    fetch('http://192.168.2.116:3000/kommentfelvitel',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}

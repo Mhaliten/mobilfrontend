@@ -15,9 +15,7 @@ export default class AppTermek extends React.Component {
 
     }
 	
-	setInterval(()=> {
-        this.kivalaszt(this.state.akttema)
-     }, 2000);
+	
   }
 
   
@@ -25,7 +23,7 @@ export default class AppTermek extends React.Component {
 
   componentDidMount(){
     alert("hello")
-    return fetch('http://192.168.2.110:3000/termekek')
+    return fetch('http://192.168.2.116:3000/tipusok')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -51,7 +49,7 @@ export default class AppTermek extends React.Component {
     let bemenet={
       bevitel1:szam
     }
-    return fetch('http://192.168.2.110:3000/temalekerdez',{
+    return fetch('http://192.168.2.116:3000/tipus_lekerdez',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -66,7 +64,7 @@ export default class AppTermek extends React.Component {
         dataSource2: responseJson,
       }, function(){
 
-        //alert(JSON.stringify(this.state.dataSource2))
+        alert(JSON.stringify(this.state.dataSource2))
       });
 
     })
@@ -100,7 +98,7 @@ export default class AppTermek extends React.Component {
         style={{backgroundColor:"grey",width:150,margin:10,borderRadius:10}}
         onPress={async ()=>this.kivalaszt(item.tema_id)}
       >
-        <Text style={{color:"white",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.termektipus_nev} </Text>
+        <Text style={{color:"white",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.tipus_nev} </Text>
          
       </TouchableOpacity>
    
