@@ -22,8 +22,8 @@ export default class AppTermek extends React.Component {
 
 
   componentDidMount(){
-    alert("hello")
-    return fetch('http://192.168.2.116:3000/tipusok')
+    // alert("hello")
+    return fetch('http://192.168.1.109:3000/tipusok')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -33,7 +33,7 @@ export default class AppTermek extends React.Component {
         }, function(){
 
         });
-       alert(JSON.stringify(this.state.dataSource))
+     //  alert(JSON.stringify(this.state.dataSource))
 
 
       })
@@ -43,13 +43,14 @@ export default class AppTermek extends React.Component {
   }
 
   kivalaszt=async (szam)=>{
-    //alert(szam)
+   // alert(szam)
+    
     this.setState({akttema:szam})
 
     let bemenet={
       bevitel1:szam
     }
-    return fetch('http://192.168.2.116:3000/tipus_lekerdez',{
+    return fetch('http://192.168.1.109:3000/tipus_lekerdez',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -64,7 +65,7 @@ export default class AppTermek extends React.Component {
         dataSource2: responseJson,
       }, function(){
 
-        alert(JSON.stringify(this.state.dataSource2))
+       // alert(JSON.stringify(this.state.dataSource2))
       });
 
     })
@@ -96,7 +97,7 @@ export default class AppTermek extends React.Component {
  
          <TouchableOpacity
         style={{backgroundColor:"grey",width:150,margin:10,borderRadius:10}}
-        onPress={async ()=>this.kivalaszt(item.tema_id)}
+        onPress={async ()=>this.kivalaszt(item.tipus_id)}
       >
         <Text style={{color:"white",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.tipus_nev} </Text>
          
@@ -106,12 +107,12 @@ export default class AppTermek extends React.Component {
         
         }
     
-          keyExtractor={({tema_id}, index) => tema_id}
+          keyExtractor={({tipus_id}, index) => tipus_id}
         />
            </View>
 {/* ----------------------------------------------------uj class meghivasa*/}
 
-<Bevitel akttema_bevitel={this.state.akttema}  frissit={()=>this.kivalaszt(this.state.akttema)}  />
+
 {/*--------------------------------------------------------------------------a témába tartozó üzenetek */}        
 <FlatList
           data={this.state.dataSource2}
@@ -121,19 +122,27 @@ export default class AppTermek extends React.Component {
 
          
         <Text style={{color:"#00ffcc",fontSize:20,marginTop:15}}   >
-          {item.uzenet_szoveg} </Text>
+          {item.termek_nev} </Text>
           <Text style={{color:"white",fontSize:15}}   >
-          {item.uzenet_nev} </Text>
-          <Text style={{color:"#003840",fontSize:10,marginBottom:5}}   >
-          {item.uzenet_datum} </Text>
+          {item.termek_ar_HUF} Ft / {item.termek_mertekegyseg} </Text>
+          
      
    
           </View>
         
         }
     
-          keyExtractor={({uzenet_id}, index) => uzenet_id}
+          keyExtractor={({termek_id}, index) => termek_id}
         />
+
+
+
+
+
+
+
+
+
 
       </View>
     );
