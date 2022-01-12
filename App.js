@@ -18,6 +18,12 @@ function NotificationsScreen({ navigation }) {
   );
 }
 
+function receptek({ navigation }) {
+  return (
+    <AppTermek/>
+  );
+}
+
 const Drawer = createDrawerNavigator();
 
 export default function App() {
@@ -26,6 +32,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Főmenü">
         <Drawer.Screen name="Főmenü" component={fomenu_lap} />
         <Drawer.Screen name="Értesítések" component={NotificationsScreen} />
+        <Drawer.Screen name="Receptek" component={receptek} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
