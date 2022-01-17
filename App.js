@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import AppTermek from "./AppTermek"
+import AppTermek from "./AppTermek";
+import Receptek from "./Receptek";
 
 function fomenu_lap({ navigation }) {
   return (
@@ -20,7 +21,7 @@ function NotificationsScreen({ navigation }) {
 
 function receptek({ navigation }) {
   return (
-    <AppTermek/>
+    <Receptek/>
   );
 }
 
