@@ -23,7 +23,7 @@ export default class AppTermek extends React.Component {
 
   componentDidMount(){
     // alert("hello")
-    return fetch('http://192.168.2.113:3000/etkez')
+    return fetch('http://192.168.1.109:3000/etkez')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -50,7 +50,7 @@ export default class AppTermek extends React.Component {
     let bemenet={
       bevitel1:szam
     }
-    return fetch('http://192.168.2.113:3000/tipus_lekerdez',{
+    return fetch('http://192.168.1.109:3000/recept_lekerdez',{
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -115,6 +115,33 @@ export default class AppTermek extends React.Component {
 
 {/*--------------------------------------------------------------------------a témába tartozó üzenetek */}        
 
+
+<FlatList
+          data={this.state.dataSource2}
+          renderItem={({item}) => 
+
+          <View style={{borderWidth:1,margin:20,backgroundColor:"#367588",paddingLeft:10,paddingRight:10,borderRadius:10}}>
+
+         
+<Text style={{color:"white",fontSize:20}}   >
+           {item.etel_nev}
+           
+          </Text>
+          <Text>
+            Elk
+          </Text>
+          
+        <Text style={{color:"#00ffcc",fontSize:20,marginTop:15}}   >
+          {item.recept_hozzavalok} </Text>
+          
+     
+   
+          </View>
+        
+        }
+    
+          keyExtractor={({recept_id}, index) => recept_id}
+        />
 
 
 
